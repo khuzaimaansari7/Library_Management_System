@@ -11,9 +11,7 @@ public class Library {
     static class Node {
         int id;
         String name;
-        String Book_Content;
         String author;
-        String publisher;
         Node next_Node;
         int count;
 
