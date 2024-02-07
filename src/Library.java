@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Library {
     private Node head = null;
     private Node2 head1 = null;
-    private Scanner scanner = new Scanner(System.in); // Creating a Scanner object for input
+    private final Scanner scanner = new Scanner(System.in); // Creating a Scanner object for input
 
     private String Studentname;
     private int SeNumber;
@@ -151,15 +151,14 @@ public class Library {
             }
             ptr.next_Node = new_Node;
         }
-        System.out.print("Book Id: " + id);
-        System.out.print("Book Name: " + name);
-        System.out.print("Author: " + author);
-        System.out.println("Book Added Successfully");
+        System.out.println(" ");
+        System.out.println("Book Added Successfully!");
         try {
-            // Pause the program for three seconds
-            Thread.sleep(5000); // 5000 milliseconds = 5 seconds
+            // Pause the program for one and a half seconds
+            Thread.sleep(1500); // 1500 milliseconds = 1.5 seconds
         } catch (InterruptedException e) {
             // Handle interrupted exception if needed
+            System.out.println("Error in adding book!");
             e.printStackTrace();
         }
     }
@@ -192,7 +191,7 @@ public class Library {
         System.out.print("\033[H\033[2J");
         System.out.flush();
         System.out.println("<=== Search Books ===>");
-        System.out.print("Enter Dsu Id: ");
+        System.out.print("Enter Book Id: ");
         int t_id = scanner.nextInt();
         Node ptr = head;
         int found = 0;
@@ -207,7 +206,7 @@ public class Library {
             System.out.println("Book not found");
         }
         try {
-            // Pause the program for three seconds
+            // Pause the program for five seconds
             Thread.sleep(5000); // 5000 milliseconds = 5 seconds
         } catch (InterruptedException e) {
             // Handle interrupted exception if needed
@@ -234,7 +233,7 @@ public class Library {
             System.out.println("Book not found");
         }
         try {
-            // Pause the program for three seconds
+            // Pause the program for five seconds
             Thread.sleep(5000); // 5000 milliseconds = 5 seconds
         } catch (InterruptedException e) {
             // Handle interrupted exception if needed
@@ -245,15 +244,13 @@ public class Library {
     private void displayBook(Node node) {
         System.out.print("\033[H\033[2J");
         System.out.flush();
-        System.out.println("<========= Book Details =========>");
-        System.out.println("Dsu Id: " + node.id);
+        System.out.println("<========= Available Books =========>");
+        System.out.println("Book Id: " + node.id);
         System.out.println("Book Name: " + node.name);
-        System.out.println("Book Content: " + node.Book_Content);
         System.out.println("Author: " + node.author);
-        System.out.println("Publisher Name: " + node.publisher);
         try {
-            // Pause the program for three seconds
-            Thread.sleep(5000); // 5000 milliseconds = 5 seconds
+            // Pause the program for one and a half seconds
+            Thread.sleep(1500); // 1500 milliseconds = 1.5 seconds
         } catch (InterruptedException e) {
             // Handle interrupted exception if needed
             e.printStackTrace();
@@ -263,25 +260,22 @@ public class Library {
     private void update() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
-        System.out.println("<=== Update Books ===>");
-        System.out.print("Enter Dsu Id: ");
+        System.out.println("<=== Update Book ===>");
+        System.out.println("Only One Book At A Time");
+        System.out.print("Enter Book Id To Update: ");
         int t_id = scanner.nextInt();
         Node ptr = head;
         int found = 0;
         while (ptr != null) {
             if (t_id == ptr.id) {
-                System.out.print("Dsu Id: ");
+                System.out.print("New Book Id: ");
                 ptr.id = scanner.nextInt();
                 System.out.print("Book Name: ");
                 ptr.name = scanner.next();
-                System.out.print("Book Content: ");
-                ptr.Book_Content = scanner.next();
                 System.out.print("Author: ");
                 ptr.author = scanner.next();
-                System.out.print("Publisher Name: ");
-                ptr.publisher = scanner.next();
                 found++;
-                System.out.println("Book Updated Successfully");
+                System.out.println("Book Has Been Updated Successfully");
             }
             ptr = ptr.next_Node;
         }
@@ -289,10 +283,11 @@ public class Library {
             System.out.println("Book not found");
         }
         try {
-            // Pause the program for three seconds
-            Thread.sleep(5000); // 5000 milliseconds = 5 seconds
+            // Pause the program for one and a half seconds
+            Thread.sleep(1500); // 1500 milliseconds = 1.5 seconds
         } catch (InterruptedException e) {
             // Handle interrupted exception if needed
+            System.out.println("Error occurred while updating book");
             e.printStackTrace();
         }
     }
@@ -301,7 +296,7 @@ public class Library {
         System.out.print("\033[H\033[2J");
         System.out.flush();
         System.out.println("<=== Delete Books ===>");
-        System.out.print("Enter Dsu Id: ");
+        System.out.print("Enter Book Id: ");
         int t_id = scanner.nextInt();
         int found = 0;
         if (head == null) {
@@ -334,14 +329,14 @@ public class Library {
     private void show() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
-        System.out.println("<=== Show Books Record ===>");
+        System.out.println("<=== Books Record ===>");
         Node ptr = head;
         while (ptr != null) {
             displayBook(ptr);
             ptr = ptr.next_Node;
         }
         try {
-            // Pause the program for three seconds
+            // Pause the program for five seconds
             Thread.sleep(5000); // 5000 milliseconds = 5 seconds
         } catch (InterruptedException e) {
             // Handle interrupted exception if needed
@@ -409,8 +404,10 @@ public class Library {
             if (IdSearch == ptr.id) {
                 displayBook(ptr);
                 found++;
+                System.out.println(" ");
                 System.out.println("Borrow By: " + Studentname);
                 System.out.println("Student-ID: " + SeNumber);
+                System.out.println(" ");
                 System.out.println("Book Borrowed Successfully");
                 ptr.count++;
             }
@@ -420,7 +417,7 @@ public class Library {
             System.out.println("Book not found");
         }
         try {
-            // Pause the program for three seconds
+            // Pause the program for five seconds
             Thread.sleep(5000); // 5000 milliseconds = 5 seconds
         } catch (InterruptedException e) {
             // Handle interrupted exception if needed
